@@ -1,17 +1,18 @@
-# For exact versions, run:
-#   python -m pip freeze | grep -E "^(numpy|pandas|scikit-learn|matplotlib|seaborn|xgboost|tensorflow|shap|lime|joblib|anthropic|flask|jupyter)="
-# or run the project’s version script in the environment where your capstone works.
+# Core data science and ML stack for student dropout prediction
+# Python 3.10+ recommended
 
-numpy>=1.26,<3.0
+numpy>=1.26,<2.0
 pandas>=2.1,<3.0
 scikit-learn>=1.4,<2.0
 matplotlib>=3.8,<4.0
 seaborn>=0.13,<0.14
 xgboost>=2.1,<3.0
-tensorflow>=2.15,<2.17
 shap>=0.45,<1.0
 lime>=0.2.0,<1.0
 joblib>=1.4,<2.0
-anthropic>=0.34,<1.0
-flask>=3.0,<4.0
 jupyter>=1.0,<2.0
+
+# Optional: for development and reporting
+# Add these manually if needed:
+# ipython>=8.0        # for enhanced notebooks
+# pytest>=7.0         # for tests (if added)
