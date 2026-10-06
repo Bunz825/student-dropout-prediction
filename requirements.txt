@@ -1,0 +1,15 @@
+# REPLACE these lines with the output of:  python src/print_versions.py
+# (run it in the environment where your capstone works, so versions match)
+numpy
+pandas
+scikit-learn
+matplotlib
+seaborn
+xgboost
+tensorflow
+shap
+lime
+joblib
+anthropic
+flask
+jupyter
