@@ -1,7 +1,6 @@
-# This repo needs a Python 3.10-3.12 environment.
-# For exact versions that match your working capstone environment, run:
+# For exact versions, run:
 #   python -m pip freeze | grep -E "^(numpy|pandas|scikit-learn|matplotlib|seaborn|xgboost|tensorflow|shap|lime|joblib|anthropic|flask|jupyter)="
-# or use a local `src/print_versions.py` script if you have one in your environment.
+# or run the project’s version script in the environment where your capstone works.
 
 numpy>=1.26,<3.0
 pandas>=2.1,<3.0
