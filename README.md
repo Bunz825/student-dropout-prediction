@@ -2,136 +2,144 @@
 
 **Post Graduate Diploma in Artificial Intelligence and Machine Learning — Capstone Project**
 
-An end-to-end machine learning system to identify at-risk students early, enabling timely academic intervention.
+A data-driven solution for identifying students at risk of dropping out early, enabling proactive and targeted academic support.
 
 ---
 
 ## Overview
 
-This project applies classification modeling to predict student dropout risk using academic, financial, and demographic data. Early identification allows academic advisors to provide targeted support before students disengage.
+This project develops a machine learning pipeline to predict student dropout risk using academic, demographic, and financial data. The goal is to support advising teams with earlier, more informed intervention decisions.
 
-**Dataset:** 4,424 students, 37 features (UCI ML Repository)  
-**Problem:** Binary classification (Dropout vs. Enrolled/Graduate)  
-**Best Model:** Logistic Regression — achieves all performance targets with high interpretability for real-world deployment.
+- **Dataset:** Predict Students' Dropout and Academic Success (UCI Machine Learning Repository)
+- **Records:** 4,424 students
+- **Features:** 37 variables
+- **Problem Type:** Binary classification (Dropout vs. non-dropout)
+- **Best Model:** Logistic Regression
 
 ## Results
 
+The primary model meets the capstone performance targets for the dropout class:
+
 | Metric | Target | Achieved |
-|--------|--------|----------|
+| --- | --- | --- |
 | Recall | ≥ 0.80 | **0.841** |
 | Precision | ≥ 0.70 | **0.773** |
 | AUC-ROC | ≥ 0.85 | **0.926** |
 | Accuracy | — | **0.812** |
 
-The logistic regression model was selected for its transparent feature coefficients and strong performance across all metrics, making it ideal for explainable, high-stakes decision support.
+Logistic Regression was selected because it achieves the required performance while remaining highly interpretable. This is important in academic settings where explanations for intervention decisions should be understandable to advisors and stakeholders.
 
 ## Quick Start
 
-### Installation
+### 1. Clone the repository
 ```bash
 git clone https://github.com/Bunz825/student-dropout-prediction.git
 cd student-dropout-prediction
+```
+
+### 2. Install dependencies
+```bash
 pip install -r requirements.txt
 ```
 
-### Run the full pipeline
+### 3. Run the full pipeline
 ```bash
 python run_all.py
 ```
 
-This executes all 9 modeling steps in sequence, producing trained models, performance metrics, and diagnostic figures in the `reports/` directory.
+This executes the project in sequence and generates trained models, evaluation metrics, and visual diagnostics in the `reports/` and `models/` folders.
 
-## Project Structure
+## Repository Structure
 
-```
+```text
 student-dropout-prediction/
 ├── README.md
-├── requirements.txt               # Python dependencies
-├── run_all.py                     # Entry point: orchestrates the pipeline
-│
+├── requirements.txt
+├── run_all.py
 ├── data/
 │   ├── data_dictionary.md
 │   └── raw/
 │       └── students_dropout_academic_success.csv
-│
-├── src/                           # Numbered scripts (run in order)
-│   ├── 01_data_quality_eda.py            # Data validation and EDA
-│   ├── 02_eda_feature_engineering.py     # Feature creation (22 new features)
-│   ├── 03_train_logistic_regression.py   # Primary model
-│   ├── 04_train_random_forest.py         # Model comparison
-│   ├── 05_train_xgboost.py               # Model comparison
-│   ├── 06_train_svm.py                   # Model comparison
-│   ├── 07_train_neural_network.py        # Model comparison
-│   ├── 08_unsupervised_analysis.py       # Clustering and dimensionality
-│   └── 09_bias_fairness_audit.py         # Fairness, SHAP, LIME
-│
 ├── notebooks/
-│   └── 01_results_overview.ipynb         # Results summary notebook
-│
+│   └── 01_results_overview.ipynb
+├── src/
+│   ├── 01_data_quality_eda.py
+│   ├── 02_eda_feature_engineering.py
+│   ├── 03_train_logistic_regression.py
+│   ├── 04_train_random_forest.py
+│   ├── 05_train_xgboost.py
+│   ├── 06_train_svm.py
+│   ├── 07_train_neural_network.py
+│   ├── 08_unsupervised_analysis.py
+│   └── 09_bias_fairness_audit.py
 ├── reports/
 │   ├── Einar_R_Abuyuan_Capstone_Project.pdf
 │   ├── Einar_Ramos_Abuyuan_Business_Presentation.pptx
 │   ├── Einar_Ramos_Abuyuan_Technical_Presentation.pptx
-│   ├── model_metrics.csv                 # Generated: model comparison table
-│   ├── step5_results.txt                 # Generated: fairness audit output
-│   └── figures/                          # Generated: diagnostic plots
-│
-└── models/                        # Generated: trained model artifacts
+│   ├── model_metrics.csv
+│   ├── step5_results.txt
+│   └── figures/
+├── models/
+│   └── generated during execution
+└── .gitignore
 ```
 
-## Key Contributions
+## Key Components
 
-- **Feature Engineering:** 22 domain-derived features capturing academic engagement, financial hardship, and risk signals
-- **Model Comparison:** 5 algorithms (Logistic Regression, Random Forest, XGBoost, SVM, Neural Network)
-- **Fairness & Explainability:** SHAP values, LIME local explanations, demographic parity analysis
-- **Production-Ready:** Class weighting for imbalance, threshold optimization, fairness-aware mitigations
+- **Feature engineering:** 22 domain-specific features capturing academic performance, financial stress, and engagement risk
+- **Model comparison:** Logistic Regression, Random Forest, XGBoost, SVM, and Neural Network
+- **Bias and fairness analysis:** SHAP, LIME, demographic parity, and equal opportunity checks
+- **Decision support:** interpretable features that help advisors justify intervention decisions
 
 ## Dataset
 
 | Property | Value |
-|----------|-------|
-| **Source** | UCI ML Repository: "Predict Students' Dropout and Academic Success" |
-| **Records** | 4,424 students |
-| **Features** | 37 (academic, demographic, financial) |
-| **Class Distribution** | Graduate 50%, Dropout 32%, Enrolled 18% |
+| --- | --- |
+| **Source** | UCI Machine Learning Repository |
+| **Dataset Name** | Predict Students' Dropout and Academic Success |
+| **Records** | 4,424 |
+| **Features** | 37 |
+| **Target** | Multi-class label, modeled as dropout vs. non-dropout |
 | **Missing Values** | None |
 
-See `data/data_dictionary.md` for full feature descriptions.
+Full field descriptions are available in `data/data_dictionary.md`.
 
-## Model Selection
+## Why Logistic Regression?
 
-**Why Logistic Regression?**
-- Meets all three success targets (Recall, Precision, AUC-ROC)
-- Coefficients directly interpretable for advisor communication
-- Fast inference; low computational overhead
-- Calibrated decision thresholds for fairness mitigations
-- Robust 5-fold cross-validation results
+The logistic regression model was selected as the primary solution because it balances strong predictive performance with the interpretability required for real academic interventions.
 
-Fairness audit confirms the model maintains parity across gender, age, and economic status without systematic bias.
+It offers:
+- strong discrimination for the dropout class
+- transparent coefficients for feature-level explanations
+- strong suitability for advising workflows and stakeholder communication
+- lower complexity than more opaque models
+
+## Fairness and Responsible Use
+
+The project includes fairness and ethical assessment to understand whether the model behaves equitably across relevant demographic groups. This is important because predictive models in education must support student success without creating unintended harm or exclusion.
 
 ## Deliverables
 
-- **Final Report:** `reports/Einar_R_Abuyuan_Capstone_Project.pdf`
-- **Business Presentation:** `reports/Einar_Ramos_Abuyuan_Business_Presentation.pptx` (stakeholder-focused)
-- **Technical Presentation:** `reports/Einar_Ramos_Abuyuan_Technical_Presentation.pptx` (methods & results)
-- **Results Notebook:** `notebooks/01_results_overview.ipynb`
+- Final capstone report: `reports/Einar_R_Abuyuan_Capstone_Project.pdf`
+- Business presentation: `reports/Einar_Ramos_Abuyuan_Business_Presentation.pptx`
+- Technical presentation: `reports/Einar_Ramos_Abuyuan_Technical_Presentation.pptx`
+- Notebook summary: `notebooks/01_results_overview.ipynb`
 
 ## Technologies
 
-- **Languages:** Python 93.3%, Jupyter Notebook 6.7%
-- **Core Libraries:** scikit-learn, XGBoost, TensorFlow, pandas, NumPy
+- **Languages:** Python (93.3%), Jupyter Notebook (6.7%)
+- **Core libraries:** scikit-learn, pandas, NumPy, XGBoost, TensorFlow, matplotlib, seaborn
 - **Explainability:** SHAP, LIME
-- **Fairness:** Demographic parity, equal opportunity, disparate impact analysis
+- **Evaluation:** precision, recall, ROC-AUC, cross-validation, fairness metrics
 
 ## Notes
 
-- All scripts use dynamic path resolution; run from the repository root
-- Model artifacts and metrics are generated during execution
-- Random seed (42) ensures reproducibility; neural network may vary in third decimal place on different hardware
-- Fairness mitigations tested: unawareness, reweighting, and group-aware thresholds
+- The project is designed to run from the repository root without hard-coded local paths.
+- Model artifacts and generated files are produced during execution.
+- A fixed random seed is used to promote reproducibility.
+- The fairness and explainability workflow is included to support responsible deployment decisions.
 
 ---
 
 **Author:** Einar Ramos Abuyuan  
-**Institution:** Post Graduate Diploma in AI & Machine Learning  
-**Language Composition:** Python (93.3%), Jupyter (6.7%)
+**Program:** Post Graduate Diploma in Artificial Intelligence and Machine Learning
