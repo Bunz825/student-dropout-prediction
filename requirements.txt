@@ -1,15 +1,18 @@
-# REPLACE these lines with the output of:  python src/print_versions.py
-# (run it in the environment where your capstone works, so versions match)
-numpy
-pandas
-scikit-learn
-matplotlib
-seaborn
-xgboost
-tensorflow
-shap
-lime
-joblib
-anthropic
-flask
-jupyter
+# This repo needs a Python 3.10-3.12 environment.
+# For exact versions that match your working capstone environment, run:
+#   python -m pip freeze | grep -E "^(numpy|pandas|scikit-learn|matplotlib|seaborn|xgboost|tensorflow|shap|lime|joblib|anthropic|flask|jupyter)="
+# or use a local `src/print_versions.py` script if you have one in your environment.
+
+numpy>=1.26,<3.0
+pandas>=2.1,<3.0
+scikit-learn>=1.4,<2.0
+matplotlib>=3.8,<4.0
+seaborn>=0.13,<0.14
+xgboost>=2.1,<3.0
+tensorflow>=2.15,<2.17
+shap>=0.45,<1.0
+lime>=0.2.0,<1.0
+joblib>=1.4,<2.0
+anthropic>=0.34,<1.0
+flask>=3.0,<4.0
+jupyter>=1.0,<2.0
